@@ -19,9 +19,7 @@ module ActiveAdmin
     #
     module HandleColumn
       DEFAULT_OPTIONS = {
-        move_to_top_url: ->(resource, namespace=ActiveAdmin.application.default_namespace) { url_for([:move_to_top, namespace, resource]) },
-        move_to_top_handle: '&#10514;'.html_safe,
-        show_move_to_top_handle: ->(resource) { !resource.first? },
+        show_move_to_top_handle: false,
         sort_url: ->(resource, namespace=ActiveAdmin.application.default_namespace) { url_for([:sort, namespace, resource]) },
         sort_handle: '&#8645;'.html_safe
       }
@@ -38,7 +36,7 @@ module ActiveAdmin
         column '', class: 'activeadmin_sortable_table' do |resource|
           options = defined_options.evaluate(self, resource)
 
-          sort_handle(options, resource.send(resource.position_column)) #+ move_to_top_handle(options)
+          sort_handle(options, resource.send(resource.position_column))
         end
       end
 
@@ -53,12 +51,6 @@ module ActiveAdmin
                    )
       end
 
-      def move_to_top_handle(options)
-        link_to_if(options[:show_move_to_top_handle], options[:move_to_top_handle], options[:move_to_top_url],
-                   method: :post,
-                   class: 'move_to_top',
-                   title: 'Move to top') { '' }
-      end
     end
 
     ::ActiveAdmin::Views::TableFor.send(:include, HandleColumn)
