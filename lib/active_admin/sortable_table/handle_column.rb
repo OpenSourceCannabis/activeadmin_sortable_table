@@ -23,7 +23,7 @@ module ActiveAdmin
         move_to_top_handle: '&#10514;'.html_safe,
         show_move_to_top_handle: ->(resource) { !resource.first? },
         sort_url: ->(resource, namespace=ActiveAdmin.application.default_namespace) { url_for([:sort, namespace, resource]) },
-        sort_handle: '&#9776;'.html_safe
+        sort_handle: '&#8645;'.html_safe
       }
 
       # @param [Hash] arguments
@@ -38,7 +38,7 @@ module ActiveAdmin
         column '', class: 'activeadmin_sortable_table' do |resource|
           options = defined_options.evaluate(self, resource)
 
-          sort_handle(options, resource.send(resource.position_column)) + move_to_top_handle(options)
+          sort_handle(options, resource.send(resource.position_column)) #+ move_to_top_handle(options)
         end
       end
 
