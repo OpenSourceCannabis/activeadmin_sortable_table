@@ -14,7 +14,7 @@ RSpec.describe ActiveAdmin::SortableTable, 'Move to top', type: :feature, js: tr
     expect(ordered_ids).to eq([1, 2, 3, 4])
 
     # Initially only one element on the second page
-    visit admin_categories_path(page: 2)
+    visit dashboard_categories_path(page: 2)
 
     expect(visible_ids).to contain_exactly(4)
     expect(visible_numbers).to contain_exactly(4)
@@ -29,7 +29,7 @@ RSpec.describe ActiveAdmin::SortableTable, 'Move to top', type: :feature, js: tr
     expect(visible_ids).to contain_exactly(3)
 
     # And when I visit previous page
-    visit admin_categories_path(page: 1)
+    visit dashboard_categories_path(page: 1)
 
     # I should see pushed elenent on the top
     expect(visible_ids).to eq([4, 1, 2])

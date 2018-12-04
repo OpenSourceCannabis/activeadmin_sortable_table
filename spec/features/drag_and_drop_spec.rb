@@ -13,7 +13,7 @@ RSpec.describe ActiveAdmin::SortableTable, 'Drag-and-Drop', type: :feature, js: 
     before do
       expect(ordered_ids).to eq([1, 2, 3])
 
-      visit admin_categories_path
+      visit dashboard_categories_path
 
       expect(visible_ids).to eq([1, 2, 3])
       expect(visible_numbers).to eq([1, 2, 3])
@@ -74,7 +74,7 @@ RSpec.describe ActiveAdmin::SortableTable, 'Drag-and-Drop', type: :feature, js: 
     before do
       expect(ordered_ids).to eq([1, 2, 3, 4, 5, 6])
 
-      visit admin_categories_path(page: 2)
+      visit dashboard_categories_path(page: 2)
 
       expect(visible_ids).to eq([4, 5, 6])
       expect(visible_numbers).to eq([4, 5, 6])
