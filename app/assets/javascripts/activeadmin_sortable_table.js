@@ -35,7 +35,6 @@
           data: $.extend(customParams, { position: newPosition }),
           error: function () { console.error('Saving sortable error'); },
           success: function () {
-            location.href = location.href;
           },
           async: false
         });
