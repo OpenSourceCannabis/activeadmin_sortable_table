@@ -1,5 +1,5 @@
 (function($) {
-  $(document).ready(function() {
+  $(document).on("turbolinks:load", function () {
     $('.handle').closest('tbody').activeAdminSortableTable();
   });
 
